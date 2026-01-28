@@ -12,7 +12,6 @@ const App = () => {
       <SearchTaskForm />
       <TodoInfo />
       <TodoList />
-      <div className="todo__empty-message"></div>
     </div>
   )
 }
