@@ -1,6 +1,9 @@
 import TodoItem from "./TodoItem";
 
-const TodoList = () => {
+const TodoList = (props) => {
+  const {
+    tasks = []
+  } = props
   const hasTasks = true;
 
   if (!hasTasks) {
@@ -9,18 +12,13 @@ const TodoList = () => {
 
   return (
     <ul className="todo__list">
-      <TodoItem 
-        className="todo__item"
-        id="task-1"
-        title="Изучить Next" 
-        isDone
-      />
-      <TodoItem 
-        className="todo__item"
-        id="task-2"
-        title="Сделать проект на Next" 
-        isDone={false}
-      />
+      {tasks.map((task) => (
+        <TodoItem 
+          className="todo__item"
+          key={task.id}
+          {...task}
+        />
+      ))}
     </ul>
   );
 };
