@@ -1,7 +1,13 @@
-const Button = () => {
-    return (
-    <button className="button" type="submit">Add</button>
-    )
-}
+const Button = (props) => {
+  const { className = "", type = "button", children } = props;
+  return (
+    <button 
+      className={`button ${className}`}
+      type={type}
+    >
+      {children}
+    </button>
+  );
+};
 
-export default Button
+export default Button;
