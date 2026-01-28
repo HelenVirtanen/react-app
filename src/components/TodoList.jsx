@@ -1,3 +1,5 @@
+import TodoItem from "./TodoItem";
+
 const TodoList = () => {
   const hasTasks = true;
 
