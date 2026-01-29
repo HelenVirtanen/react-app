@@ -1,4 +1,4 @@
-import AddTaskForm from "./AddTaskFrom";
+import AddTaskForm from "./AddTaskForm";
 import SearchTaskForm from "./SearchTaskForm";
 import TodoInfo from "./TodoInfo";
 import TodoList from "./TodoList";
@@ -25,10 +25,14 @@ const Todo = () => {
     console.log('Search', query)
   }
 
+  const addTask = () => {
+    console.log(`Task was added`);
+  }
+
   return (
     <div className="todo">
       <h1 className="todo__title">To Do List</h1>
-      <AddTaskForm />
+      <AddTaskForm addTask={addTask} />
       <SearchTaskForm onSearchInput={filterTasks}/>
       <TodoInfo 
         total={tasks.length} 
