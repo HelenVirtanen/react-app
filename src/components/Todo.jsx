@@ -33,7 +33,7 @@ const Todo = () => {
     <div className="todo">
       <h1 className="todo__title">To Do List</h1>
       <AddTaskForm addTask={addTask} />
-      <SearchTaskForm onSearchInput={filterTasks}/>
+      <SearchTaskForm onSearchInput={filterTasks} />
       <TodoInfo 
         total={tasks.length} 
         done={tasks.filter(({ isDone }) => isDone).length}
