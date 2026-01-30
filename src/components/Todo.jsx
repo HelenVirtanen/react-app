@@ -13,11 +13,18 @@ const Todo = () => {
   const [newTaskTitle, setNewTaskTitle] = useState('');
 
   const deleteAllTasks = () => {
-    console.log('Delete all tasks')
+    const isConfirmed = confirm('Are you sure you want to delete all?');
+
+    if (isConfirmed) {
+      setTasks([]);
+    }
   }
 
   const deleteTask = (taskId) => {
-    console.log(`Delete task with ${taskId}`)
+    const isConfirmed = confirm(`Are you sure you want to delete task?`);
+    if (isConfirmed) {
+      setTasks(tasks.filter((task) => task.id !== taskId));
+    }
   }
 
   const toggleTaskComlete = (taskId, isDone) => {
@@ -37,6 +44,7 @@ const Todo = () => {
       }
 
       setTasks([...tasks, newTask])
+      setNewTaskTitle('');
     }
   }
 
