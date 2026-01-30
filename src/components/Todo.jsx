@@ -27,9 +27,16 @@ const Todo = () => {
     }
   }
 
-  const toggleTaskComlete = (taskId, isDone) => {
-    console.log(`Task ${taskId} ${isDone ? 'done' : 'is not done'}`)
-  }
+  const toggleTaskComplete = (taskId, isDone) => {
+    setTasks(
+      tasks.map((task) => {
+        if (task.id === taskId) {
+          return { ...task, isDone }
+        }
+        
+        return task
+      }))
+    }
 
   const filterTasks = (query) => {
     console.log('Search', query)
@@ -65,7 +72,7 @@ const Todo = () => {
       <TodoList 
         tasks={tasks} 
         onDeleteTaskButtonClick={deleteTask}
-        onTaskCompleteChange={toggleTaskComlete}
+        onTaskCompleteChange={toggleTaskComplete}
       />
     </div>
   );
