@@ -4,6 +4,7 @@ const Field = (props) => {
     id,
     label,
     type = "text",
+    ref,
     value,
     onInput
   } = props;
@@ -19,6 +20,7 @@ const Field = (props) => {
         placeholder=" "
         autoComplete="off"
         type={type}
+        ref={ref}
         value={value}
         onInput={onInput}
       />
