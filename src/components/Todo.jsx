@@ -74,13 +74,6 @@ const Todo = () => {
     newTaskInputRef.current.focus();
   }, []);
 
-  const renderCount = useRef(0);
-
-  useEffect(() => {
-    renderCount.current++
-    console.log(`Component rendered ${renderCount.current} times`)
-  }, [])
-
   const clearSearchQuery = searchQuery.trim().toLowerCase();
   const filteredTasks = clearSearchQuery.length > 0 ? tasks.filter(
     ({ title }) => title.toLowerCase().includes(clearSearchQuery)
