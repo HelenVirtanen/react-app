@@ -3,6 +3,7 @@ import AddTaskForm from "./AddTaskForm";
 import SearchTaskForm from "./SearchTaskForm";
 import TodoInfo from "./TodoInfo";
 import TodoList from "./TodoList";
+import Button from "./Button";
 
 const Todo = () => {
   const [tasks, setTasks] = useState(() => {
@@ -16,12 +17,12 @@ const Todo = () => {
       { id: "task-2", title: "Сделать проект на Next", isDone: false },
     ];
   });
-
   const [newTaskTitle, setNewTaskTitle] = useState("");
+  const [searchQuery, setSearchQuery] = useState("");
 
   const newTaskInputRef = useRef(null);
-
-  const [searchQuery, setSearchQuery] = useState("");
+  const firstIncompleteTaskRef = useRef(null);
+  const firstIncompleteTaskId = tasks.find(({ isDone }) => !isDone)?.id
 
   const deleteAllTasks = () => {
     const isConfirmed = confirm("Are you sure you want to delete all?");
@@ -73,6 +74,13 @@ const Todo = () => {
     newTaskInputRef.current.focus();
   }, []);
 
+  const renderCount = useRef(0);
+
+  useEffect(() => {
+    renderCount.current++
+    console.log(`Component rendered ${renderCount.current} times`)
+  }, [])
+
   const clearSearchQuery = searchQuery.trim().toLowerCase();
   const filteredTasks = clearSearchQuery.length > 0 ? tasks.filter(
     ({ title }) => title.toLowerCase().includes(clearSearchQuery)
@@ -96,11 +104,18 @@ const Todo = () => {
         done={tasks.filter(({ isDone }) => isDone).length}
         onDeleteAllButtonClick={deleteAllTasks}
       />
+      <Button 
+        onClick={() => firstIncompleteTaskRef.current?.scrollIntoView({behavior: 'smooth'})}
+      >
+        Show first incomplete task
+      </Button>
       <TodoList
         tasks={tasks}
         filteredTasks={filteredTasks}
         onDeleteTaskButtonClick={deleteTask}
         onTaskCompleteChange={toggleTaskComplete}
+        firstIncompleteTaskRef={firstIncompleteTaskRef}
+        firstIncompleteTaskId={firstIncompleteTaskId}
       />
     </div>
   );
