@@ -22,8 +22,6 @@ const useTasks = () => {
       const [searchQuery, setSearchQuery] = useState("");
     
       const newTaskInputRef = useRef(null);
-      const firstIncompleteTaskRef = useRef(null);
-      const firstIncompleteTaskId = tasks.find(({ isDone }) => !isDone)?.id;
     
       const deleteAllTasks = useCallback(() => {
         const isConfirmed = confirm("Are you sure you want to delete all?");
@@ -94,8 +92,6 @@ const useTasks = () => {
       return {
         tasks,
         filteredTasks,
-        firstIncompleteTaskRef,
-        firstIncompleteTaskId,
         deleteTask,
         deleteAllTasks,
         toggleTaskComplete,
