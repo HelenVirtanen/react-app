@@ -46,4 +46,20 @@
       background-repeat: no-repeat;
     }
   }
+
+  &.is-invalid {
+    border-color: var(--color-red-2);
+  }
+}
+
+.field__error {
+  position: absolute;
+  top: 100%;
+  left: 2%;
+  font-size: 12px;
+  color: var(--color-red-2);
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  max-width: 100%;
 }
