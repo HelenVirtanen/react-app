@@ -11,9 +11,15 @@ const AddTaskForm = () => {
     newTaskInputRef
   } = useContext(TasksContext);
 
+  const clearNewTaskTitle = newTaskTitle.trim();
+  const isNewTaskTitle = clearNewTaskTitle.length === 0;
+
   const onSubmit = (event) => {
     event.preventDefault()
-    addTask();
+
+    if (!isNewTaskTitle) {
+    addTask(clearNewTaskTitle);
+    }
   }
 
   return (
@@ -26,7 +32,9 @@ const AddTaskForm = () => {
         value={newTaskTitle}
         onInput={(event) => setNewTaskTitle(event.target.value)}
       />
-      <Button type="submit">Add</Button>
+      <Button 
+        type="submit"
+        isDisabled={newTaskTitle.trim().length === 0}>Add</Button>
     </form>
   );
 };

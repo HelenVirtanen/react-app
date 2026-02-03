@@ -29,7 +29,7 @@
 
   &:hover,
   &:focus {
-    border-color: var(--color-red-2);
+    border-color: var(--color-gray-4);
   }
 
   &:focus {
